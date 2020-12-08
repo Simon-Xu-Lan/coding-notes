@@ -1,0 +1,81 @@
+# file structure
+
+- ./liya-api
+
+  - .dockerignore
+  - .env
+  - .eslintrc
+  - .gitignore
+  - docker-compose.yml
+  - DockerFile
+  - LICENSE
+  - package-lock.json
+  - package.json
+  - README.md
+  - wait-for-it.sh
+  - webpack.config.ts
+  - ./src
+    - ./app
+      - index.ts
+      - ./BoxOrder
+        - index.ts
+        - BoxOrder.controller.ts
+        - BoxOrder.dataAccess.ts == 🦁? Questions see blow
+        - BoxOrder.service.ts == 🦁? what is this file for
+        - BoxOrder.socket.ts == 🦁? what is this file for
+      - ./BoxProduct
+        - index.ts
+        - BoxProduct.controller.ts
+        - BoxProduct.dataAccess.ts
+        - BoxProduct.service.ts
+        - BoxProduct.socket.ts
+      - ./MailOrder
+        - index.ts
+        - MailOrder.controller.ts
+        - MailOrder.dataAccess.ts
+        - MailOrder.service.ts
+        - MailOrder.socket.ts
+        - MailOrder.type.ts
+      - ./routes
+        - index.ts
+    - ./bin
+      - ./types
+        - ./WebpackHotModule
+          - index.d.ts 🦁? Questions in file
+        - www.ts == 🦁? Questions in file
+    - ./config
+      - default.ts == 🦁? Questions in file
+      - index.ts
+    - ./database
+      - index.ts
+      - ./dbConfig
+        - index.ts == 🦁? Questions in file
+      - ./models
+        - index.ts
+        - Box.ts == 🦁? Questions in file
+        - BoxOrder.ts
+        - BoxProduct.ts
+        - Container.ts
+        - ContainerBox.ts
+        - MailOrder.ts
+        - Order.ts
+        - Product.ts
+      - ./types
+        - DbInterface
+          - index.d.ts == 🦁? What is this file for?
+        - SequelizeAttributes
+          - index.d.ts == 🦁? What is this file for?
+    - ./helpers
+      - getKeyValue.ts
+      - index.ts
+    - tsconfig.json
+
+- The api side donesn't have babel, how to hangle import, which is ES6 syntax?
+- Typescript handle the ES6 syntax?
+- didn't use express?
+- didn't use middlewares?
+  - how to handle URLencoded, and json()
+- in package.json, it sets "main" as "index.js", but there isn't "index.js" in the root folder.
+- instead, the api entry is www.ts. please explain
+- What is the difference between controller and dataAccess?
+  - dataAccess is for join table?
