@@ -49,4 +49,16 @@
   - For example, we could write a component for a button that renders different types of buttons depending on the prop it's passed.
 
 - 'npm start'
+
   - Start the app by running `npm start` in your terminal
+
+- import React library?
+
+  - Why do we import the React library? We aren't using the React keyword anywhere.
+  - Whenever we use JSX inside of our JavaScript, we need to import the React library.
+    - When Babel translates our `App` component's JSX code to plain old JavaScript
+
+- what the purpose of `ReactDOM.render` in index.js is?
+  - We use `ReactDOM.render` to render a single component or tree of components to the DOM.
+  - In normal case, `App` is the root of our component tree
+    - it renders all of our other components inside.
