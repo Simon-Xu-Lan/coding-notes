@@ -128,3 +128,28 @@
     - Copy existing repos from somewhere else to your local computer
   - git status
     - Check the status of a repo
+
+- Adding an existing project to GitHub using the command line:
+
+  - https://stackoverflow.com/questions/50025872/how-do-i-connect-a-local-folder-to-an-existing-github-repo/50026014
+    - git init # Initialize the local directory as a Git repository.
+    - git add . # Add files
+    - git commit -m "First commit" # Commit your changes
+    - git remote add origin <Remote repository URL> # # Add remote origin
+    - git remote -v # Verifies the new remote URL
+    - git push origin master # Push your changes
+
+- Check existing git url at local git repo
+
+  - git remote -v
+    - result:
+      - origin https://github.com/Simon-Xu-Lan/data_hw1_excel_challenge.git (fetch)
+      - origin https://github.com/Simon-Xu-Lan/data_hw1_excel_challenge.git (push)
+  - or git config --get remote.origin.url
+    - result:
+      - https://github.com/Simon-Xu-Lan/data_hw1_excel_challenge.git
+
+- error: src refspec master does not match any.
+  - Fixed by
+    - git push origin HEAD:main
+    - https://stackoverflow.com/questions/4181861/message-src-refspec-master-does-not-match-any-when-pushing-commits-in-git
