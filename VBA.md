@@ -86,6 +86,13 @@
     lastrow = Cells(Rows.Count, 1).End(xlUp).row
   ```
 
+  - "Rows" is a global variable to refer the rows
+  - "Rows.Count" is total rows in the worksheet, including all empty rows.
+  - "End() is a method
+    = "xlUp" is a parameter for end method. it means move up.
+
+- last column
+
 - Cells(x ,y)
 
   - x is row, start from 1, eg. row 1: x = 1
