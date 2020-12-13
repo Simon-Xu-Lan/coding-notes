@@ -1,0 +1,6 @@
+- range()
+  - range(5, 0, -1)
+    - start: 5
+    - stop: 0
+    - step: -1
+    - it will go: 5, 4, 3, 2, 1, 0

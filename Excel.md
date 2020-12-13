@@ -71,4 +71,4 @@
       - Anything below **Q1 - 1.5 IQR** could be an outlier
       - Anything above **Q3 - 1.5 IQR** could be an outlier
   - Box and Whiskers Plot / Box plot
-    - ![image](https://github.com/Simon-Xu-Lan/coding-notes/blob/master/pictures/Box_and_whisker_plots.png)
+    - ![image](https://github.com/Simon-Xu-Lan/coding-notes/blob/master/pictures/Box_and_whisker_plots.png?raw=true)
