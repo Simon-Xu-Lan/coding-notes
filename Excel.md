@@ -38,9 +38,37 @@
   - The most repetitive nmber
 
 - Z-Score
+
   - Describe **a single value's distance** from the mean of the data set
   - The distance is in terms of standard deviations
   - Can be positive or negative
     - if positive, the value is greater than the mean
     - if negative, the value is less than the mean
   - The smaller the z-score, the closer the value is to the mean
+
+- Extreme values
+
+  - Real world data can contain extreme values
+  - Some summary statistics such as the mean take into account all values of a data set
+  - Extreme values can skew these statistics
+  - Extreme values may not always be reliable
+    - In data science, extreme values are often suspicious
+    - Suspicious values are called **potential outliers**
+    - An **outlier** is a data point that differs from the rest of a data set
+    - Outliers can inaccurately skew a data set
+      - Can causes us to misrepresent the actual data
+
+- Quantiles
+
+  - Quantiles seperate a sorted data into equal-sized fragments
+  - Quantiles divide the data set into four equal parts
+    - while percentiles divide the data set into 100 equal parts
+
+- Potential outliers
+  - To identify potential outliers quantitatively
+    - outlier boundaries = 1.5 IQR
+      - IDR is the interquartile range, or the range between the 1st and 3rd quartiles
+      - Anything below **Q1 - 1.5 IQR** could be an outlier
+      - Anything above **Q3 - 1.5 IQR** could be an outlier
+  - Box and Whiskers Plot / Box plot
+    - ![image](pictures/Box and whisker plots.png)
