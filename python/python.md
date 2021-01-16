@@ -13,10 +13,11 @@
   - piano_keys[2:5] = [2,3,4]
   - ![python slicer]()
   - piano_keys[2:5:2] = [2,4]
-  - the last number 2 is step
+    - the last number 2 is step
   - piano_keys[2:] = [2,3,4,5,6,7]
-  - piano_keys[::-1] = [7,6,5,4,3,2,1]
-  - reverse the list
+
+  - reverse list
+    - piano_keys[::-1] = [7,6,5,4,3,2,1]
   - piano_keys[::2] = [1, 3, 5, 7]
 
 - bool()
@@ -30,22 +31,23 @@
 
   - https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files
 
-- Filt path
-  - absolute file path
-    - always start from the root foler
-    - eg.
-      - /work/project/report.ppt
-  - relative file path
-    - from the working folder
-    - ./project/report.ppt
-    - ./ : current foldeer
-    - ../ : pareent folder. one level up
-      - The .. goes up one folder
-    - if in the same folder
-      - the following solutions both works
-        - ./report.ppt
-        - report.ppt
-        - the "./" is optional.
+# File path
+
+- absolute file path
+  - always start from the root foler
+  - eg.
+    - /work/project/report.ppt
+- relative file path
+  - from the working folder
+  - ./project/report.ppt
+  - ./ : current foldeer
+  - ../ : pareent folder. one level up
+    - The .. goes up one folder
+  - if in the same folder
+    - the following solutions both works
+      - ./report.ppt
+      - report.ppt
+      - the "./" is optional.
 - len()
 
   - len() is a global method
@@ -115,7 +117,7 @@
       # Initialize csv.writer
       csvwriter = csv.writer(csvfile, delimiter=',')
       # Write the first row (column headers)
-      csvwriter.writerow(['First Name1', 'Last Name1', 'SSN1'])
+      zyjkm    csvwriter.writerow(['First Name1', 'Last Name1', 'SSN1'])
       # Write the second row
       csvwriter.writerow(['Caleb1', 'Frost1', '505-80-29011'])
   ```
@@ -127,6 +129,8 @@
 
   - with open() block
     - with open() block will automatically close file after the block.
+
+- windows os add: csvfile=open(csvpath, encoding='utf8') to solve issue if have
 
 - read() vs. csv.reader()
   - plain reading method read() returns a string
@@ -208,6 +212,13 @@
     new_dict = { new_key: new_value for (key, value) in dict.items()}
     # for pandas dataframe
     new_dict = {new_key: new_value for (index, dataframe_row) in dataframe.iterrows()}
+
+  ```
+
+- f string comprehension
+
+  ```py
+    [f"Headline: {article['title']}. \nBreif: {article['description']}" for article in articles]
 
   ```
 
@@ -512,3 +523,31 @@
       can_drive = False
     return can_drive  # return value must be bool as defined.
 ```
+
+- slice list
+
+```py
+  a[start: stop] # items start through stop-1
+  a[start:]      # itesm start through the rest of the array
+  a[:stop]       # items start the beginning through stop-1
+  a[:]           # a copy of the whole array
+  a[::-1]        # reverse the list
+    a.reverse()
+    for n in range(len(a)-1, 0, -1):
+```
+
+# jupyter
+
+- launch jupyter notebook
+- at terminal under a folder, run "jupyter notebook"
+
+  - the jupyter will serve that folder
+  - automatically open that folder on browser
+
+- run cell: shift + enter
+
+When cell is under editing, it is highlighted by green
+When cell is highlighted by blue, you can change the mode
+
+- press "m" key for markdown mode, cell is highlighted by blue
+- press "y" key for code mode, cell is highlighted by green

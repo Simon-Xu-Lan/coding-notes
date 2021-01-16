@@ -42,3 +42,93 @@
     data = response.json()
     print(data)
   ```
+
+  ```py
+    import requests
+
+    api_key = "bac6bdea9c179d427565c0bc9f8fc351"
+    OWM_Endpoint = "https://api.openweathermap.org/data/2.5/onecall"
+
+    parameter = {
+        "lat": 39.801121,
+        "lon": -105.081451,
+        "appid": api_key
+    }
+
+
+    response = requests.get(url=OWM_Endpoint, params=parameter)
+    response.raise_for_status()
+    data = response.json()
+    print(data)
+
+  ```
+
+- online json viewer
+
+  - http://jsonviewer.stack.hu/
+
+- API list
+  - https://apilist.fun/
+  - Stock Price API https://www.alphavantage.co/
+    - API Key: WHKNAHNQ03MGQP63
+  - News API https://newsapi.org/
+    - API Key: 4170118ecad8405790edc56242f6335e
+- Twilio API https://www.twilio.com/
+
+```py
+  from twilio.rest import Client
+
+  client = Client(account_sid, auth_token)
+  message = client.messages.create(
+                     body="Join Earth's mightiest heroes. Like Kevin Bacon.",
+                     from_='+12407527107',
+                     to='+17203978719'
+                 )
+```
+
+- Pixela
+
+- HTTP Requests
+
+  - GET
+    requests.get()
+  - POST
+    requests.post()
+  - PUT
+    requests.put()
+  - DELETE
+    requests.delete()
+
+- HTTP headers
+
+  ```py
+    graph_endpoint = f"{pixela_endpoint}/simon/graphs"
+
+    graph_config = {
+        "id": "graph1",
+        "name": "Cycling Graph",
+        "unit": "Km",
+        "type": "float",
+        "color": "ajisai"
+    }
+
+    headers = {
+        "X-USER-TOKEN": "codeforfun2020"
+    }
+
+    response = requests.post(url=graph_endpoint, json=graph_config, headers=headers)
+
+  ```
+
+- Nutritionix API
+
+  - https://docs.google.com/document/d/1_q-K-ObMTZvO0qUEAxROrN3bwMujwAN25sLHwJzliK0/edit#
+
+- Google Sheet Data Management
+  - Sheety API
+  - 100 days of code lecture 330 https://www.udemy.com/course/100-days-of-code/learn/lecture/21309266#overview
+
+- Flight Search API (Free Signup, Requires Credit Card Details) -
+  - https://partners.kiwi.com/
+  - Flight Search API Documentation - https://tequila.kiwi.com/portal/docs/tequila_api
+

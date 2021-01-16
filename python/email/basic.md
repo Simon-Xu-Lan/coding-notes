@@ -7,6 +7,7 @@
   - Hotmail: smtp.live.com
   - Outlook: outlook.office365.com
   - Yahoo: smtp.mail.yahoo.com
+  - If you use another email provider, just Google for your email provider e.g. "Gmail SMTP address"
 
 2. Make sure you've enabled less secure apps if you are sending from a Gmail account.
 1. Manage your Google Account
@@ -75,7 +76,7 @@
 - UnicodeEncodeError: 'ascii' codec can't encode character u'\u201c' in position 34: ordinal not in range(128)
 
   - https://stackoverflow.com/questions/24264892/unicodeencodeerror-ascii-codec-cant-encode-character-u-u201c-in-position-3
-  - use **.encode("utf-8")**
+  - use .encode() to encode the string:
   - demo code
 
   ```py

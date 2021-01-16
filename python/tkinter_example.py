@@ -27,6 +27,8 @@ button.pack()
 my_image = PhotoImage(file="path/to/image_file.png")
 button = Button(image=my_image, highlightthickness=0)
 
+# disable button
+button.config(state="disabled")
 
 #Entries
 entry = Entry(width=30)
@@ -119,8 +121,7 @@ quote_text = canvas.create_text(
     150, 
     207, 
     width =180,   # set the text width, then the text will wrap automatically
-    text="Kanye Quote Goes HERE", 
-    width=250, 
+    text="Kanye Quote Goes HERE",
     font=("Arial", 30, "bold"), 
     fill="white"
 )

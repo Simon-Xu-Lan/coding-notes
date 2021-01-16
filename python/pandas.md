@@ -33,3 +33,7 @@ finally:
 ```py
   new_dict = {new_key: new_value for (index, dataframe_row) in dataframe.iterrows()}
 ```
+
+# DataFrame
+
+- DataFrame is a table, has row and column

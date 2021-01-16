@@ -38,3 +38,11 @@
       - windows
          - explore file name
    
+- copy folder
+   cp -R source_dir destination_dir
+   #example
+   cp -R /etc /etc_backup
+   Source:devconnected.com
+
+- copy file
+   
