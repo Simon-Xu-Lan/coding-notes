@@ -1,8 +1,8 @@
-from merge_sort import Solution
+from binary_search import Solution
 
 check = Solution()
 
-A=[1, 5]
-B=[2, 3]
+nums = [1,4,4,5,7,7,8,9,9,10]
+target = 1
 
-print(check.mergeSortedArray(A, B))
+print(check.firstPosition(nums, target))
