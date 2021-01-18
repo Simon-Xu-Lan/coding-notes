@@ -7,3 +7,21 @@
 | It's incorporated seamlessly into existing projects to add functionality that you can access using an API. | It cannot be seamlessly incorporated into an existing project. Instead it can be used when a new project is started. |
 | They are important in program linking and binding process.                                                 | They provide a standard way to build and deploy applications                                                         |
 | Example: jQuery is a JavaScript library that simplifies COM manipulation.                                  | Example: AngularJS is a JavaScript-based framework for dynamic web applications.                                     |
+
+## Resources
+
+- Flask Quikc Start Documentation
+  - Flask Quick Start Documentation
+
+## Routing route
+
+- https://flask.palletsprojects.com/en/1.1.x/quickstart/#routing
+
+## Working Flask URL Paths and the Flask Debugger
+
+- 452 Working Flask URL Paths and the Flask Debugger
+- Enable debug
+
+## giphy
+
+- https://giphy.com/

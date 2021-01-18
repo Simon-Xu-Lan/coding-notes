@@ -73,6 +73,7 @@ def calculate(n, **kwargs):
 - 447, **name** and **main**: Special attribtes built into python
 - 448, Python Functions as first class objects: passing and nesting function
 - 449, Python decorator functions and @ syntactic suger
+- 455, Advanced Decorators with \*args and \*\*kwargs
 
 # Python Decorators
 
@@ -169,6 +170,30 @@ print(result)
   print("How are you?")
   decorated_function = delay_decorator(say_greeting)
   decorated_function()
+```
+
+## Advanced decorators with \*args and \*\*kwargs
+
+```py
+  class User:
+    def __init__(self, name):
+      self.name = name
+      self.is_logged_in = False
+
+  def is_authenticated_decorator(function):
+    def wrapper(*args, **kwargs):
+      if args[0].is_logged_in == True:
+        function(args[0])
+    return wrapper
+
+  @is_authenticated_decorator
+  def Create_blog_post(user):
+    print(f'This is {user.name}'s new blog post.")
+
+  new_user = User("angela")
+  new_user.is_logged_in = True
+
+  Create_blog_post(new_user)
 ```
 
 # Visualize Coding Running

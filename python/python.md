@@ -652,3 +652,7 @@ print(result)
 # Visualize Coding Running
 
 - http://pythontutor.com/visualize.html#mode=display
+
+# Class
+
+- Day 17
