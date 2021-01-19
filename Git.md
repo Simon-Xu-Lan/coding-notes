@@ -150,6 +150,10 @@
       - https://github.com/Simon-Xu-Lan/data_hw1_excel_challenge.git
 
 - error: src refspec master does not match any.
+
   - Fixed by
     - git push origin HEAD:main
     - https://stackoverflow.com/questions/4181861/message-src-refspec-master-does-not-match-any-when-pushing-commits-in-git
+
+- git commit -m #
+  - ignore the message

@@ -42,8 +42,28 @@ Press the WIN + . (full stop) keyboard shortcut, or else the WIN + ; (semicolon)
 Emoji are divided into several categories: smiley faces and animals, people, celebrations and objects, food and plants, transportation and places, symbols.
 
 # Emoji
-  - https://emojipedia.org/
+
+- https://emojipedia.org/
 
 # Publish your website
+
 https://www.udemy.com/course/100-days-of-code/learn/lecture/21752610#overview
 
+# HTML template
+
+https://html5up.net/
+
+# Edit HTML contend on webpage instead of HTML file
+
+1. go to chrome console, enter the following, and hit enter
+   ```js
+   document.body.contentEditable = true;
+   ```
+2. go to the webpage and click and change the content.
+
+# Delete HTMl elemnent on webpage through chrome develoment tool
+
+click the arrow sign on the upper left corner at development tool
+then you can select element and use backslash to delete it
+
+# Save the webpage as a html file and replace the old html file.
