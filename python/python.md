@@ -656,3 +656,8 @@ print(result)
 # Class
 
 - Day 17
+
+# Continue and break
+
+- Continue 会跳过当前层循环中的代码，强迫执行当前层的下一次循环
+- Break 是用来终止当前的循环， 但是并不终止外层循环。

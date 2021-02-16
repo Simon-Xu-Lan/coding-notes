@@ -257,6 +257,13 @@
   - 0 indicates no correlation.
 - Real-world data is never perfect.
 
+| abr(r)             | Correlation  |
+| ------------------ | ------------ |
+| abs(r) < 0.3       | none or weak |
+| 0.3 < abs(r) < 0.5 | weak         |
+| 0.5 < abs(r) < 0.7 | moderate     |
+| 0.7 < abs(r)       | strong       |
+
 ### The equation of a line
 
 - y = mx + b
@@ -274,11 +281,15 @@
 - more technically it’s a measure of how many standard deviations below or above the population mean a raw score is.
 - https://www.statisticshowto.com/probability-and-statistics/z-score/
 
-❓❓❓
-05/ bonus
-http://localhost:8888/notebooks/05-Matplotlib/2/Activities/05-Stu_BikeTrippin-Groupby/Unsolved/bike_trippin.ipynb
+## Add grid
+plt.grid(True)
+## Save the figure
+plt.savefig("filepath")
 
-❓❓❓
-53
-78
-84 mode
+# color map
+https://matplotlib.org/examples/color/colormaps_reference.html
+
+# Add more y axis 
+https://www.delftstack.com/howto/matplotlib/how-to-add-y-axis-label-to-secondary-y-axis-in-matplotlib/
+https://stackoverflow.com/questions/11640243/pandas-plot-multiple-y-axes
+

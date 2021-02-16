@@ -186,6 +186,7 @@ img:hover {
 
   - https://www.flaticon.com/
   - gif: https://giphy.com/
+  - Free images: https://unsplash.com/
 
   # size
 
@@ -233,6 +234,6 @@ img:hover {
   }
   ```
 
-  # HTML CSS practice 
+  # HTML CSS practice
+
   https://www.frontendmentor.io/
-  

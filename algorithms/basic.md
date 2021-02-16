@@ -376,3 +376,299 @@ Follow up：
 
 有同学可能会问为什么明明可以 start = mid + 1 偏偏要写成 start = mid?
 大部分时候，mid 是可以 +1 和 -1 的。在一些特殊情况下，比如寻找目标的最后一次出现的位置时，当 target 与 nums[mid] 相等的时候，是不能够使用 mid + 1 或者 mid - 1 的。因为会导致漏掉解。那么为了节省脑力，统一写成 start = mid / end = mid 并不会造成任何解的丢失，并且也不会损失效率——log(n) 和 log(n+1) 没有区别。
+
+# 什么是队列（Queue）？
+- 队列（queue）是一种采用先进先出（FIFO，first in first out）策略的抽象数据结构
+- 比如生活中排队，总是按照先来的先服务，后来的后服务。
+- 最常用的就是在宽度优先搜索(BFS）中，记录待扩展的节点。
+- 队列这个数据结构是宽度优先搜索算法的基础数据结构，宽度优先搜索就是基于队列实现的。
+
+## 队列内部存储元素的方式，一般有两种，数组（array）和链表（linked list）。两者的最主要区别是：
+- 数组对随机访问有较好性能。
+- 链表对插入和删除元素有较好性能。
+
+
+## 用数组实现队列
+- 在使用数组表示队列时，我们首先要创建一个长度为MAXSIZE的数组作为队列。
+- 因为MAXSIZE是数组的长度，那MAXSIZE-1就是队列的最大下标了。
+- 在队列中，除了用一组地址连续的存储单元依次存储从队首到队尾的元素外，还需要附设两个整型变量head和tail分别指示队首和队尾的位置。
+- 我们主要介绍三个操作：
+  - 初始化队列
+  - enqueue()向队尾插入元素
+  - dequeue()删除并返回队首元素
+- 每次元素入队时，tail向后移动；每次元素出队时，head向后移动。
+- 我们可以将队列视作一个类，通过成员变量数组来表示一组地址连续的存储单元，再定义两个成员变量head和tail，将队列的基本操作定义成类的方法。
+  - 为了将重点放在实现队列上，做了适当简化。示范队列仅支持整数类型，若想实现泛型，可用反射机制和object对象传参；
+  - 此外，可多做安全检查并抛出异常
+```python
+class MyQueue(object):
+    def __init__(self):
+        # do some intialization if necessary
+        self.MAXSIZE = 4
+        self.queue = [0] * self.MAXSIZE
+        self.head, self.tail = 0, 0
+    
+    """
+    
+    """
+
+    def enqueue(self, item):
+      """
+      Add a new element into queue
+      @param: item: An integer
+      @return: nothing
+      """
+      queue = self.queue
+        
+      # 队列满
+      if self.tail == self.MAXSIZE:
+        return
+      
+      queue[self.tail] = item
+      self.tail += 1
+        
+
+    def dequeue(self):
+      """
+      Remove an element from queue return it
+      @return: An integer
+      """
+      queue = self.queue
+      
+      # 队列为空
+      if self.head == self.tail:
+        return -1
+      
+      item = queue[self.head]
+      self.head += 1
+      return item
+```
+
+- 但是大家会发现，如果这样实现队列的话，我们考虑MAXSIZE为4的情况，如果我们采取下面的操作
+```python
+  enqueue(1)
+  enqueue(2)
+  enqueue(3)
+  enqueue(3)     
+  dequeue()
+  dequeue() 
+```
+- 结束后数组的状态时[^, ^, 3, 4], head = 2, tail = 4。（'^'表示该位置为空，即当前元素已经出队
+- 从我们之前的判断来看，tail == MAXSIZE , 当前队列已经满了，不能继续添加元素了，
+- 但是实际上我们还可以继续添加元素。因此在使用数组实现队列时，可能会出现空间未有效利用的情况，因此，我们有两种解决方法：
+  1. 使用链表来实现队列
+  2. 使用数组来实现循环队列
+ 
+## 用链表实现队列
+- 链表是由多个节点构成的，
+- 一个节点由两部分组成:一个是数据域,一个是指针域.
+- 链表分为:
+  - 单链表(只能是父节点引用子节点),
+  - 双链表(相邻的节点可相互引用),
+  - 循环链表(在双链表的基础上,头尾节点可相互引用).
+- 实现链表,就是在链表里加入节点,使用节点的引用域使节点之间形成连接,可相互调用.
+- 链表队列的实现原理:首先定义一个节点类,节点类包含引用域和数据域.
+- 然后定义一个链表类,链表类形成节点间的引用关系.
+
+- 我们主要介绍三个操作：
+  - 初始化队列
+  - enqueue()向队尾插入元素
+  - 初始化队dequeue()删除并返回队首元素列
+- 在队列中，我们只要用两个指针head和tail分别指向链表的头部和尾部即可实现基本队列功能
+```python
+class Node():
+  def __init__(self, _val):
+    self.next = None
+    self.val = _val
+  
+  def enqueue(self, item):
+    """
+    Add a new element into queue
+    @param: item: An integer    
+    @return: nothing
+    """                                
+    if self.head is None:
+        self.head = Node(item)
+        self.tail = self.head
+    else:
+        self.tail.next = Node(item)
+        self.tail = self.tail.next
+
+
+    def dequeue(self):
+        if self.head is not None:
+            item = self.head.val
+            self.head = self.head.next
+            return item
+        return -1
+```
+### 可以发现链表可以轻松地避免“假溢出”的问题，因为在每次需要新增元素时，只需要新建一个ListNode就可以了。
+
+##  如何用数组实现循环队列
+- 队列是一种先进先出的线性表，它只允许在表的一端进行插入，而在另一端删除元素。
+- 允许插入的一端称为队尾，允许删除的一端称为队首
+#### 假溢出
+- 数组实现的队列会导致“虽然数组没满，但是tail已经指向了数组末尾，返回数组已满，队列溢出的错误信号”   
+#### 克服"假溢出"现象的方法是：将向量空间想象为一个首尾相接的圆环，并称这种向量为循环向量
+- 存储在其中的队列称为循环队列（Circular Queue）
+- 循环队列是把顺序队列首尾相连，把存储队列元素的表从逻辑上看成一个环，成为循环队列。
+- 在循环队列中，除了用一组地址连续的存储单元依次存储从队首到队尾的元素外，
+- 还需要附设两个整型变量head和tail分别指示队首和队尾的位置。
+- 我们可以将循环队列视作一个类，
+  - 通过成员变量数组来表示一组地址连续的存储单元，
+  - 再定义两个成员变量head和tail，
+  - 将循环队列的基本操作定义成类的方法，
+- 循环效果则用“模”运算实现，以此来实现循环队列
+  - 每当tail到达末尾的时候，将tail对MAXSIZE取模，使其回到队首。
+#### 但是如果这样我们会发现一个问题，队列为空和队列已满的条件都成了tail == head。
+#### 为了避免这种无法判断的情况，我们规定当循环队列只剩一个空位的时候，就认为队列已满。
+#### 这样队列已满的条件就成了 (tail + 1) % MAXSIZE == head。
+```python
+class MyQueue(object):
+  
+  def __init__(self):
+    self.SIZE = 100000
+    self.queue = [0] * self.SIZE
+    self.head = 0
+    self.tail = 0
+    
+  def enqueue(self, item):
+    # Queue is full
+    if (self.tail + 1) % self.SIZE == self.head:
+      return
+    
+    self.queue[self.tail] = item
+    self.tail = (self.tail + 1) % self.SIZE
+    
+     ai
+  def dequeue(self):
+    # Queue is empty
+    if self.tail == self.head:
+      return -1
+    item = self.queue[self.head]
+    self.head = (self.head + 1) % self.SIZE
+    return item
+```
+
+# BFS 宽度优先搜索
+## BFS 适用场景
+- 分层遍历
+  - 一层一层的遍历一个图，树，矩阵
+  - 简单图最短路径
+    - 简单图的定义是：图中所有边长都一样
+- 连痛块问题
+  - 通过图中一个点找到其他所有联通的点
+  - 找到所有方案问题的一种非递归实现方式
+- 拓扑排序
+  - 实现容易度远超过DFS
+  
+### 先序遍历通常使用递归方式来实现，即使使用非递归方式，也是借助栈来实现的，所以并不适合BFS，
+### 而层次遍历因为是一层一层的遍历，所以是BFS十分擅长的；
+### 边长一致的图是简单图，所以可以用BFS，因为BFS只适用于简单图
+### 矩阵连通块也是BFS可以处理的问题，求出最大块只需要维护一个最大值即可；
+### 求所有方案问题，因此可以用BFS来处理，但是并不是唯一的解决方式。
+
+# 什么是图（Graph）？
+- 图在离线数据中的表示方法为 <E, V>，E表示 Edge，V 表示 Vertex。
+- 也就是说，图是顶点（Vertex）和边（Edge）的集合。
+- 图分为：
+  - 有向图（Directed Graph）
+  - 无向图（Undirected Graph）
+- BFS 大部分的时候是在图上进行的。
+- BFS 在两种图上都适用。另外，树（Tree）也是一种特殊的图。
+- ![graph image](./images/graph.png)
+
+
+## 二叉树的BFS vs 图的BFS：
+- 二叉树中进行 BFS 和图中进行 BFS 最大的区别就是二叉树中无需使用 HashSet（C++: unordered_map, Python: dict) 来存储访问过的节点（丢进过 queue 里的节点）
+- 因为二叉树这种数据结构，上下层关系分明，没有环（circle），所以不可能出现一个节点的儿子的儿子是自己的情况。
+- 但是在图中，一个节点的邻居的邻居就可能是自己了。
+
+- 我们假设一张图有4个顶点，其中1与2有一条边，2与3有一条边，3与1有一条边，即使节点4没有边，这4个点也构成图，只是图不连通而已；
+- 图上的节点如果有一条边连接自己，那么就形成了自环，自环在图中是可以存在的。
+                
+## 图的数据结构
+- 有很多种方法可以存储一个图，最常用的莫过于：
+  1. 邻接矩阵
+  2. 邻接表
+- 而邻接矩阵因为耗费空间过大，我们通常在工程中都是使用邻接表作为图的存储结构。
+
+### 邻接矩阵 Adjacency Matrix
+[
+  [1,0,0,1],
+  [0,1,1,0],
+  [0,1,1,0],
+  [1,0,0,1]
+]
+- 例如上图表示0号点和3号点有连边。1号点和2号点有连边。
+- 当然，每个点和自己也是默认有连边的。
+- 图中的 0 表示不连通，1 表示连通。
+- 我们也可以用一个更具体的整数值来表示连边的长度。
+- 邻接矩阵我们可以直接用一个二维数组表示，如
+  - int[][] matrix;
+- 这种数据结构因为耗费 O(n^2) 的空间，所以在稀疏图上浪费很大，因此并不常用。
+
+### 邻接表 (Adjacency List)
+[
+  [1],
+  [0,2,3],
+  [1],
+  [1]
+]
+- 这个图表示 0 和 1 之间有连边，1 和 2 之间有连边，1 和 3 之间有连边。
+- 即每个点上存储自己有哪些邻居（有哪些连通的点）。
+- 这种方式下，空间耗费和边数成正比，
+  - 可以记做 O(m)，m代表边数。m最坏情况下虽然也是 O(n^2)
+  - 但是邻接表的存储方式大部分情况下会比邻接矩阵更省空间。
+  
+- 可以用自定义的类来实现邻接表edGraphNode {rs;
+```python
+# Python:                                            
+def DirectedGraphNode:                             
+  def init(self, label):                             
+    self.label = label                                 
+    self.neighbors = [] # a list of DirectedGraphNode's
+```
+
+
+也可以使用 HashMap 和 HashSet 搭配的方式来存储邻接表
+Map<T, Set> = new HashMap<Integer, HashSet>();
+Python:
+
+假设nodes为节点标签的列表:
+使用了Python中的dictionary comprehension语法
+adjacency_list = {x:set() for x in nodes}
+
+另一种写法
+adjacency_list = {}
+for x in nodes:
+adjacency_list[x] = set()
+其中 T 代表节点类型。通常可能是整数(Integer)。
+这种方式虽然没有上面的方式更加直观和容易理解，但是在面试中比较节约代码量。
+而自定义的方法，更加工程化，所以在面试中如果时间不紧张题目不难的情况下，推荐使用自定义邻接表的方式。
+
+### 为什么 BFS 可以搜索到最短路？
+- 因为BFS是按照层级进行搜索，所以搜到答案时，一定是最短的一条路径。
+  - 我们可以使用反证法进行证明：
+  - 我们假设当前搜索到的路径 Y 不是最短的，那就说明存在一条更短的路径 X（即 X < Y）。
+  - 令路径 X 中的所有点是 {x1,x2,...,xx}。
+  - 那么x1是起点，且为 BFS 的第一层，x2为第二层......xx为第x层，
+  - 此时的结果与BFS中第Y层初次遇到xx点产生矛盾。
+  - 因此不存在任何一条比Y短的路径能找到终点。
+  
+# 递归 Recursion，深度优先搜索 DFS， 和回溯法 Backtracking 的区别
+## 递归 Recursion
+- 递归函数：程序的一种实现方式， 即函数进行了自我调用
+- 递归算法： 即大问题的结果依赖于小问题的结果， 于是先用递归函数求解小问题
+- 般我们说递归的时候， 大部分时候堵在说递归函数而不是递归算法
+## 深度优先搜索  DFS
+- 可以用递归函数来实现
+- 也可以不用递归函数来实现， 如自己通过一个手动创建的栈 Stack 进行操作
+- 深度优先搜索通常是指在搜索的过程中优先搜索深度更深的点而不是按照宽度搜索同层节点。
+## 回溯 Backtracking
+- 回溯 Backtracking  =  深度优先搜索  DFS  
+- 回溯法就是深度优先搜索算法
+- 回溯操作： 
+  - 递归函数再回到上一层递归调用处的时候，一些参数需要改回到调用前的值， 这个操作就是回溯， 即让状态参数回到之前的值。
+  - 递归调用之前做了什么改动， 递归调用之后都改回来
+

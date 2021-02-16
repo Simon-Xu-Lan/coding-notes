@@ -22,6 +22,13 @@
      - It is used to define the relationship between two classes. When a child class acquires all properties and behaviors of parent class known as inheritance.
      - Child class can reuse all the codes written in parent class.
      - It provides the code reusability.
+    ```python
+    class Fish(Animal):
+        def __init__(selt):
+            super().__init__() 
+    # super() refers to the super class Animal, 
+    # Fish class will inheritant all animal class methods and property
+    ```
 
   4. POLYMORPHISM: "多态性“
      - It is an ability of object to behave in multiple form.

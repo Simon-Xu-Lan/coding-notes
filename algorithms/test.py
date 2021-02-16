@@ -1,8 +1,12 @@
-from binary_search import Solution
+from merge_sort import Solution
+from random import randint
 
 check = Solution()
 
-nums = [1,4,4,5,7,7,8,9,9,10]
-target = 1
+# nums = [3,2,1,4,5]
+nums = [randint(1, 100*1000) for i in range(100)]
+print(nums)
 
-print(check.firstPosition(nums, target))
+check.sortIntegers(nums)
+
+print(nums)
