@@ -1,4 +1,4 @@
-## Library vs. Framework
+# Library vs. Framework
 
 | Librara                                                                                                    | Framework                                                                                                            |
 | ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -8,16 +8,103 @@
 | They are important in program linking and binding process.                                                 | They provide a standard way to build and deploy applications                                                         |
 | Example: jQuery is a JavaScript library that simplifies COM manipulation.                                  | Example: AngularJS is a JavaScript-based framework for dynamic web applications.                                     |
 
-## Resources
+# Flask
+
+https://py.plainenglish.io/how-to-build-a-web-api-fa0f3bd73a71
+
+```py
+from flask import Flask
+
+app=Flask(__name__)
+@app.route('/')
+def index():
+    return 'Welcome'
+if __name__ == '__main__':
+    app.run()
+```
+
+## app=Flask(**name**)
+
+- create an instance of the Flask class and pass the name of the application (variable **name**) as the argument to the constructor.
+
+## Flask object
+
+- Flask object is a WSGI (Web Server Gateway Interface) application
+  - which means that the web server passes all the requests it receives to this instance for further processing.
+
+## @app.route('/')
+
+- Flask maps HTTP requests to Python functions.
+- This is achieved through the .route() decorator in the code.
+- A Route binds a URL to a function, which can be programmed to respond to a request.
+
+## The designated URL, ‘/’, or technically when no additional path is provided
+
+- is mapped to our simple user-defined function, index().
+
+## if **name** == '**main**':
+
+- The condition **name**==’**main**’ ensures that the .run() method starts the server when the script is executed as the main program.
+
+## Sample Data
+
+```py
+@app.route('/sample/')
+def sample():
+    return jsonify([{'state': 'CA', 'city': 'Napa', 'name': 'Sample'}])
+```
+
+- We designate the route ‘/sample/’ to call the user-defined sample() function,
+- which returns the sample data in the form of a list of a Python dictionary with key-value pairs.
+- jaonidy
+  - The query results have to be serialized through the jsonify() method and turned into a response object.
+- Route
+  - Flask will redirect the request without the trailing slash to the URL with the trailing slash.
+  - This means a request to /breweries will be redirected to /breweries/
+
+# Connecting the Web Application to the Database
+
+```sql
+from flask import jsonify
+from flask_cors import CORS
+from sqlalchemy import create_engine
+
+CORS(app)
+engine=create_engine('sqlite:///assets/data/breweries.sqlite')
+
+@app.route('/breweries/')
+def fetch():
+    results=engine.execute('select state, city, name from breweries')
+    return jsonify([{'state': result[0], 'city': result[1], 'name': result[2]} for result in results])
+
+```
+
+## flask-CORS
+
+- flask-CORS extension to make cross-origin resource sharing possible, since we are hosting the database and API in a separate domain.
+- CORS enables controlled access to resources located outside of a given domain.
+
+## create_engine()
+
+- The create_engine() function produces an Engine object based on the database URL,
+- usually the starting point for any SQLAlchemy application.
+- The database URL usually includes username, password, hostname, database name as well as optional keyword arguments for additional configuration.
+- The typical form of a database URL is:
+
+```py
+dialect+driver://username:password@host:port/database
+```
+
+# Resources
 
 - Flask Quikc Start Documentation
   - Flask Quick Start Documentation
 
-## Routing route
+# Routing route
 
 - https://flask.palletsprojects.com/en/1.1.x/quickstart/#routing
 
-## Working Flask URL Paths and the Flask Debugger
+# Working Flask URL Paths and the Flask Debugger
 
 - 452 Working Flask URL Paths and the Flask Debugger
 - Enable debug

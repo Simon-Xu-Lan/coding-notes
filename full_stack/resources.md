@@ -2,9 +2,14 @@
 
 https://www.appbrewery.co/p/web-development-course-resources/
 
-## HTML Cheatsheet
+# HTML Cheatsheet
 
 https://web.stanford.edu/group/csp/cs21/htmlcheatsheet.pdf
+
+# HTML template
+
+- FREE
+  https://html5up.net/
 
 # CSS color
 
@@ -36,3 +41,30 @@ https://nodejs.org/api
 # Nodmon
 
 npm install -g nodemon
+
+# Modify the HTML Template/Page on Chrome
+
+1. At chrome console do:
+
+- document.body.contentEditable=true
+
+2. Modify the words on the page
+3. Delete element
+
+- Clikc the arrow button on the upper left corner at console
+- Select the element that you want to delete
+- hit backspace to delete
+
+4. Save the file by using SAVE PAGE AS ...
+
+# Image
+
+https://unsplash.com/
+
+# icons
+
+https://icons8.com/
+
+# Validate HTML code
+
+https://validator.w3.org/
