@@ -351,6 +351,18 @@ DELIMITER $$
 CALL starprint(5);
 ```
 
+# 11-B MySQL Use CTE Recursive / Common Table Expression Recursive
+
+```sql
+WITH RECURSIVE cte AS
+(
+  SELECT 1 AS n, CAST('*' AS CHAR(500)) AS str
+  UNION ALL
+  SELECT n + 1, CONCAT(str, '*') FROM cte WHERE n < 5
+)
+SELECT str FROM cte;
+```
+
 # 12 MySQL Print Prime Number
 
 - Write a query to print all prime numbers less than or equal to .
@@ -459,4 +471,214 @@ END$$
 DELIMITER ;
 
 CALL print_primes(1000);
+```
+
+# 13-MySQL recursive
+
+```sql
+WITH RECURSIVE cte (n) AS
+(
+  SELECT 1
+  UNION ALL
+  SELECT n + 1 FROM cte WHERE n < 8
+)
+SELECT * FROM cte;
+```
+
+# 13 Use CTE recursive to calculate Factorial
+
+```sql
+WITH RECURSIVE factorial(n, factorial) AS (
+	SELECT 0, 1
+    UNION ALL
+    SELECT n + 1, factorial * (n + 1)
+    FROM factorial
+    WHERE n < 20 )
+SELECT * FROM factorial;
+```
+
+# 14 Use CTE recursive to calculate Fibonacci Series - **Two-Level Sequence**
+
+```sql
+WITH RECURSIVE fibanacci (n, fib_n, next_fib_n) AS (
+	SELECT 1, 0, 1
+    UNION ALL
+    SELECT n + 1, next_fib_n, fib_n + next_fib_n
+    FROM fibanacci
+    WHERE n < 20)
+SELECT * FROM fibanacci;
+```
+
+# 15 Date Sequence
+
+- https://www.percona.com/blog/2020/02/13/introduction-to-mysql-8-0-recursive-common-table-expression-part-2/
+
+```sql
+WITH RECURSIVE dates(date) AS (
+	SELECT '2020-02-01'
+    UNION ALL
+    SELECT date + INTERVAL 1 day
+    FROM dates
+    WHERE date < '2020-02-08')
+SELECT dates.date, COALESCE(SUM(price), 0) sales
+FROM dates LEFT JOIN sales
+ON dates.date = sales.order_date
+GROUP BY dates.date;
+
+```
+
+# 15 MySQL Join using > and <, not =
+
+```sql
+SELECT CASE WHEN G.Grade >=8 THEN S.Name
+            ELSE NULL
+       END,
+       G.Grade, S.Marks
+FROM Students S
+JOIN Grades G
+ON S.Marks <= G.Max_Mark AND S.Marks >= G.Min_Mark
+ORDER BY G.Grade DESC, S.Name, S.Marks;
+```
+
+### Join using BETWEEN
+
+```sql
+SELECT CASE WHEN G.Grade >=8 THEN S.Name
+            ELSE NULL
+       END,
+       G.Grade, S.Marks
+FROM Students S
+JOIN Grades G
+ON S.Marks BETWEEN G.Min_Mark AND G.Max_Mark
+ORDER BY G.Grade DESC, S.Name, S.Marks;
+```
+
+# 16 ALL Operator and ANY Operator
+
+- W3 Schoole https://www.w3schools.com/sql/sql_any_all.asp
+
+## SQL zoo
+
+- https://sqlzoo.net/wiki/SELECT_within_SELECT_Tutorial
+
+- world table
+
+| ame         | continent | area    | population | gdp          |
+| ----------- | --------- | ------- | ---------- | ------------ |
+| Afghanistan | Asia      | 652230  | 25500100   | 20343000000  |
+| Albania     | Europe    | 28748   | 2831741    | 12960000000  |
+| Algeria     | Africa    | 2381741 | 37100000   | 188681000000 |
+| Andorra     | Europe    | 468     | 78115      | 3712000000   |
+| Angola      | Africa    | 1246700 | 20609294   | 100990000000 |
+
+...
+
+## find the largest country in the world, by population with this query:
+
+-
+- You need the condition population>0 in the sub-query as some countries have null for population.
+
+```sql
+SELECT name
+  FROM world
+ WHERE population >= ALL(SELECT population
+                           FROM world
+                          WHERE population>0)
+```
+
+## Which countries have a GDP greater than every country in Europe? [Give the name only.] (Some countries may have NULL gdp values)
+
+```sql
+SELECT name
+FROM world
+WHERE gdp > ALL(SELECT gdp
+               FROM world
+               WHERE gdp>0 AND continent IN ('Europe'));
+
+```
+
+## Largest in each continent
+
+### Find the largest country (by population) in each continent, show the continent, the name and the population:
+
+```sql
+SELECT continent, name, population
+FROM world x
+WHERE population >= ALL
+    (SELECT population FROM world y
+     WHERE y.continent=x.continent
+     AND population>0)
+```
+
+### Find the largest country (by area) in each continent, show the continent, the name and the area:
+
+```sql
+SELECT continent, name, area
+FROM world x
+WHERE area >= ALL
+    (SELECT area FROM world y
+     WHERE y.continent=x.continent
+     AND area>0)
+```
+
+## First country of each continent (alphabetically)
+
+### List each continent and the name of the country that comes first alphabetically.
+
+```sql
+SELECT continent, name
+FROM world X
+WHERE name IN (SELECT TOP 1 name
+               FROM world Y
+               WHERE Y.continent = X.continent
+               ORDER BY name)
+```
+
+## Find the continents where all countries have a population <= 25000000. Then find the names of the countries associated with these continents. Show name, continent and population.
+
+```sql
+SELECT name, continent, population
+FROM world
+WHERE continent IN (
+   SELECT DISTINCT continent
+   FROM world X
+   WHERE 25000000 > ALL (
+       SELECT population
+       FROM world Y
+       WHERE Y.continent = X.continent
+    )
+);
+```
+
+## Some countries have populations more than three times that of any of their neighbours (in the same continent). Give the countries and continents.
+
+```sql
+SELECT name, continent
+FROM world X
+WHERE population/3 > ALL(
+    SELECT population
+    FROM world Y
+    WHERE Y.continent = X.continent
+    AND Y.name <> X.name
+)
+```
+
+## show the countries with a greater GDP than any country in Africa (some countries may have NULL gdp values).
+
+```sql
+SELECT name FROM bbc
+ WHERE gdp > (SELECT MAX(gdp) FROM bbc WHERE region = 'Africa')
+```
+
+# 17 JOIN
+
+## SQLZOO JOIN 13 https://sqlzoo.net/wiki/The_JOIN_operation
+
+```sql
+SELECT mdate,
+       team1,
+       (SELECT COUNT(teamid) FROM goal WHERE goal.matchid = game.id AND goal.teamid = game.team1) AS score1,
+       team2,
+       (SELECT COUNT(teamid) FROM goal WHERE goal.matchid = game.id AND goal.teamid = game.team2) AS score2
+FROM game
 ```

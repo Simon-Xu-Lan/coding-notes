@@ -306,3 +306,8 @@ app.listen(3000, () => {
 ## req.body
 
 - The parsed version of http request
+
+## res.send
+- Send one piece of data
+## res.wtie + res.send
+- Send multi piece of data

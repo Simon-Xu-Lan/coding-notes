@@ -1,5 +1,6 @@
 from flask import Flask
 
+# create an instance of the Flask class and pass the name of the application (variable __name__) as the argument to the constructor.
 app = Flask(__name__)
 
 def make_bold(function):

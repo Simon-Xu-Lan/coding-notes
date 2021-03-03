@@ -1,11 +1,19 @@
 **API**
-
+# API
 - Application Programming Interfaces
+- It is a software intermediary that allows systems to communicate with each other. 
+- Modern client-to-server communications are mostly handled by APIs.
 - is a set of commands, functions, protocols, and objects
 
   - that programmers can use to
     - create software
     - or interact with an external system
+
+# RESTful API
+- REpresentational State Transfer is a terminology that is frequently used to describe APIs.
+- It is a framework that describe some best practices for implementing APIs.
+- APIs that satisfy the REST principles are recognized as RESTful APIs.
+
 
 - HTTP Codes
 
@@ -132,4 +140,6 @@
 - Flight Search API (Free Signup, Requires Credit Card Details) -
   - https://partners.kiwi.com/
   - Flight Search API Documentation - https://tequila.kiwi.com/portal/docs/tequila_api
+
+
 
