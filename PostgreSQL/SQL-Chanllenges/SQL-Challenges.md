@@ -682,3 +682,57 @@ SELECT mdate,
        (SELECT COUNT(teamid) FROM goal WHERE goal.matchid = game.id AND goal.teamid = game.team2) AS score2
 FROM game
 ```
+
+# 18 SELF JOIN
+
+- SQLZOO Self Join 10
+  - https://sqlzoo.net/wiki/Self_join
+
+```sql
+
+SELECT first.num, first.company, first.end_stop, second.num, second.company
+FROM (
+    SELECT a.num AS num, a.company AS company, a.stop AS start_id, sx.name AS start_stop, b.stop as end_id, sy.name AS end_stop
+    FROM route a
+    JOIN route b ON (a.num = b.num AND a.company = b.company)
+    JOIN stops sx ON (a.stop = sx.id)
+    JOIN stops sy ON (b.stop = sy.id)
+) AS first
+JOIN (
+    SELECT c.num AS num, c.company AS company, c.stop AS start_id, sc.name AS start_stop, d.stop as end_id, sd.name AS end_stop
+    FROM route c
+    JOIN route d ON (c.num = d.num AND c.company = d.company)
+    JOIN stops sc ON (c.stop = sc.id)
+    JOIN stops sd ON (d.stop = sd.id)
+) AS second
+ON (first.end_id = second.start_id)
+WHERE first.start_stop = 'Craiglockhart' AND second.end_stop = 'Lochend'
+```
+
+SELECT hacker_id, name, sum(max_score)
+FROM (
+SELECT S.hacker_id, H.name, max_score
+FROM (
+SELECT hacker_id, challenge_id, max(score) AS max_score
+FROM Submissions
+GROUP BY hacker_id, challenge_id
+) AS S
+JOIN Hackers AS H
+USING (hacker_id)
+) AS score
+GROUP BY hacker_id, name
+HAVING sum(max_score) > 0
+ORDER BY sum(max_score) DESC, hacker_id;
+
+# 19 Symmetric Pairs https://www.hackerrank.com/challenges/symmetric-pairs/problem
+
+```sql
+SELECT F1.X, F1.Y
+FROM Functions F1
+JOIN Functions F2
+ON F1.X = F2.Y AND F1.Y = F2.X
+GROUP BY F1.X, F1.Y
+HAVING COUNT(F1.X) > 1 OR F1.X < F1.Y
+ORDER BY F1.X;
+
+```

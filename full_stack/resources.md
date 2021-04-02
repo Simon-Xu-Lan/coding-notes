@@ -68,3 +68,23 @@ https://icons8.com/
 # Validate HTML code
 
 https://validator.w3.org/
+
+# Patterns
+
+http://ui-patterns.com/
+
+https://dribbble.com/
+
+# Wireframing tool
+- manual tool
+https://sneakpeekit.com/
+
+- advanced tool
+https://balsamiq.com/wireframes/
+  - tutorial: https://www.udemy.com/course/100-days-of-code/learn/lecture/22372280#overview
+
+# Test 
+https://www.codeply.com/
+
+
+

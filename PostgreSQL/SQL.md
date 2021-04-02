@@ -316,3 +316,4 @@ FROM (SELECT city,
       GROUP BY city) AS foo
 ORDER BY ratio DESC LIMIT 3;
 ```
+

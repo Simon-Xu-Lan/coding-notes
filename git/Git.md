@@ -503,3 +503,20 @@ git rm --cached -r .
 https://www.udemy.com/course/the-complete-web-development-bootcamp/learn/lecture/12386696#overview
 
 ![git commit](images/process6.png)
+
+# Tutorial
+
+- https://www.udemy.com/course/100-days-of-code/learn/lecture/22986348#overview
+
+# .gitignore template
+
+1. Go to gitignore.io and search for a Flask gitignore template.
+
+- https://www.toptal.com/developers/gitignore
+- input Flask then hit enter
+- then hit the button Create
+
+2. Copy all the text in the resulting page
+3. create a new file at the top level of your project with the name .gitignore
+4. Paste everything from the gitignore page to this file.
+5. https://www.udemy.com/course/100-days-of-code/learn/lecture/22965798#overview
