@@ -1,0 +1,16 @@
+# Configure a parseTime function which will return a new Date object from a string
+
+```js
+var parseTime = d3.timeParse('%B');
+```
+
+# Configure a time scale
+
+- d3.extent returns the an array containing the min and max values for the property specified
+
+```js
+var xTimeScale = d3
+  .scaleTime()
+  .domain(d3.extent(forceData, (data) => data.date))
+  .range([0, chartWidth]);
+```
