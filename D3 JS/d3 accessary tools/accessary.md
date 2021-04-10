@@ -14,3 +14,11 @@ var xTimeScale = d3
   .domain(d3.extent(forceData, (data) => data.date))
   .range([0, chartWidth]);
 ```
+
+# Format the data and convert to numerical and date values
+
+- Create a function to parse date and time
+
+```js
+var parseTime = d3.timeParse('%d-%b');
+```
