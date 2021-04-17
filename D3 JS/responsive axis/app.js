@@ -1,6 +1,8 @@
 var svgWidth = 960;
 var svgHeight = 500;
 
+console.error("This is error test")
+
 var margin = {
   top: 20,
   right: 40,
@@ -103,6 +105,8 @@ d3.csv("hairData.csv").then(function(hairData, err) {
     data.num_hits = +data.num_hits;
     data.num_albums = +data.num_albums;
   });
+
+  console.log(hairData)
 
   // xLinearScale function above csv import
   var xLinearScale = xScale(hairData, chosenXAxis);

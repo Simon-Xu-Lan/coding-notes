@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+ head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <style>
+      .myclass {
+        color: 'red';
+      }
+    </style>
+  </head>
+  <body>
+    <p class="myclass" id="p1">First paragraph</p>
+    <p>Second paragraph</p>
+    <p class="myclass" id="p2">Third paragraph</p>
+    <div class="mylink">
+      <a href="https://github.com/d3-d3-selection">D3 Home</a>
+    </div>
+
+    <script>
+      d3.selectAll('.myclass ').style('color', 'green');
+      // 🍎???? selection is object, which include an array?
+      selection = d3.selectAll('.myclass');
+      console.log(selection);
+    //   🍎 why output is the first node only?
+      console.log(selection.text());
+      // 🍎 how to iterate 
+      selection.each((node) => console.log(node));
+
+    //   🍎 how to iterate an selectionn by selctALL
+    // d3.select() selects the first matching element whilst the d3.selectAll() is ‘greedy’ in that it’ll select everything that matches.
+    // https://www.animateddata.com/articles/d3/selections/
+
+    </script>
+  </body>
+</html>
+ 

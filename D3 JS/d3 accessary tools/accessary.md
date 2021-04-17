@@ -22,3 +22,6 @@ var xTimeScale = d3
 ```js
 var parseTime = d3.timeParse('%d-%b');
 ```
+
+
+The pageX read-only property of the MouseEvent interface returns the X (horizontal) coordinate (in pixels) at which the mouse was clicked, relative to the left edge of the entire document.

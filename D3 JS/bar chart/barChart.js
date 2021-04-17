@@ -40,6 +40,7 @@ function barChart(elementId, data) {
     .range([0, chartWidth])
     .padding(0.1);
 
+
   // Create a linear scale for the vertical axis.
   // Here the 0 of y correspond to chartHeight of range, the max of y correspond to 0 of range
   var yLinearScale = d3
