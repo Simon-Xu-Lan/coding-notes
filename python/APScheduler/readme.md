@@ -91,6 +91,30 @@ job 3s
 
 # More https://www.programmersought.com/article/50481656139/
 
+# Stop job
+- https://stackoverflow.com/questions/33036321/python-apscheduler-not-stopping-a-job-even-after-using-remove-job
+```py
+from apscheduler.schedulers.background import BlockingScheduler
+
+count = 0
+
+def job_function():
+    print "job executing"
+    global count, scheduler
+
+    # Execute the job till the count of 5 
+    count = count + 1
+    if count == 5:
+        scheduler.remove_job('my_job_id')
+
+
+scheduler = BlockingScheduler()
+scheduler.add_job(job_function, 'interval', seconds=1, id='my_job_id')
+
+
+scheduler.start()
+
+```
 
 
 
