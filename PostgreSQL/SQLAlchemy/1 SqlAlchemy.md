@@ -129,3 +129,20 @@ cat_list = session.query(Cat)
 for kitty in cat_list:
     print(kitty.name)
 ```
+
+## connection error
+### connect to heroku postgresql
+
+- sqlalchemy.exc.NoSuchModuleError: Can't load plugin: sqlalchemy.dialects:postgres
+- https://stackoverflow.com/questions/62688256/sqlalchemy-exc-nosuchmoduleerror-cant-load-plugin-sqlalchemy-dialectspostgre
+```py
+# database url shoud be postgresql
+'postgresql://lnsggibhegnuwr:82a4fbcaded5866b9cf551920730166d67b9d7bb2db2b0b2836603666f8c4576@ec2-52-1-115-6.compute-1.amazonaws.com:5432/d4or2bl8vpoan0'
+
+# not prostgres
+# sql alchemy not support the name postgres any more
+```
+### Install pycopg2 package
+```shell
+pip install psycopg2-binary
+```
