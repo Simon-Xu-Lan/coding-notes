@@ -1,8 +1,12 @@
 # Tutorial
+
 - https://www.youtube.com/watch?v=XSeox_9pRVA
+- https://xugaoxiang.com/2020/07/17/python-module-apscheduler/
+
 ## The most basic usage of APScheduler: **"Start the job after a few seconds."**
 
-##  basic timing scheduling
+## basic timing scheduling
+
 - APScheduler is a timed task scheduling framework for Python.
 - It provides similar task scheduling based on fixed time intervals, dates, and crontab configurations, and can persist tasks or run tasks in daemon mode.
 
@@ -11,10 +15,10 @@
 
 ```py
 from apscheduler.schedulers.blocking import BlockingScheduler
- 
+
 def job():
     print('job 3s')
- 
+
 if __name__=='__main__':
     sched = BlockingScheduler(timezone='MST')
     sched.add_job(job, 'interval', id='3_second_job', seconds=3)
@@ -24,26 +28,27 @@ if __name__=='__main__':
 
 ## 2, the difference between BlockingScheduler and BackgroundScheduler
 
-- the main difference is that BlockingScheduler will block the running of the main thread, and BackgroundScheduler will not block. 
+- the main difference is that BlockingScheduler will block the running of the main thread, and BackgroundScheduler will not block.
 - BlockingScheduler: Blocks the current thread after calling the start function. Use when the scheduler is the only thing in your application that you want to run (as in the example above).
 - BackgroundScheduler: The main thread does not block after calling start. Use it when you are not running any other frameworks and want the scheduler to execute in the background of your app.
 
 - BlockingScheduler example
 - It can be seen that BlockingScheduler will block the current thread after calling the start function, and the while loop in the main program will not be executed.
+
 ```py
 from apscheduler.schedulers.blocking import BlockingScheduler
 import time
- 
+
 def job():
     print('job 3s')
- 
- 
+
+
 if __name__=='__main__':
- 
+
     sched = BlockingScheduler(timezone='MST')
     sched.add_job(job, 'interval', id='3_second_job', seconds=3)
     sched.start()
- 
+
     While(True): # will not be executed to
         print('main 1s')
         time.sleep(1)
@@ -63,17 +68,17 @@ job 3s
 ```py
 from apscheduler.schedulers.background import BackgroundScheduler
 import time
- 
+
 def job():
     print('job 3s')
- 
- 
+
+
 if __name__=='__main__':
- 
+
     sched = BackgroundScheduler(timezone='MST')
     sched.add_job(job, 'interval', id='3_second_job', seconds=3)
     sched.start()
- 
+
     while(True):
         print('main 1s')
         time.sleep(1)
@@ -92,7 +97,9 @@ job 3s
 # More https://www.programmersought.com/article/50481656139/
 
 # Stop job
+
 - https://stackoverflow.com/questions/33036321/python-apscheduler-not-stopping-a-job-even-after-using-remove-job
+
 ```py
 from apscheduler.schedulers.background import BlockingScheduler
 
@@ -102,7 +109,7 @@ def job_function():
     print "job executing"
     global count, scheduler
 
-    # Execute the job till the count of 5 
+    # Execute the job till the count of 5
     count = count + 1
     if count == 5:
         scheduler.remove_job('my_job_id')
@@ -116,6 +123,11 @@ scheduler.start()
 
 ```
 
+# Flask
 
+- https://stackoverflow.com/questions/21214270/how-to-schedule-a-function-to-run-every-hour-on-flask
 
+## 小书童
 
+- https://www.youtube.com/watch?v=K0xhvwMetKQ
+- https://xugaoxiang.com/2020/10/08/flask-20-apscheduler/
