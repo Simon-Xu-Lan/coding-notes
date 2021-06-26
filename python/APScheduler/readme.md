@@ -131,3 +131,7 @@ scheduler.start()
 
 - https://www.youtube.com/watch?v=K0xhvwMetKQ
 - https://xugaoxiang.com/2020/10/08/flask-20-apscheduler/
+
+
+# useful link
+https://www.programmersought.com/article/7313540400/

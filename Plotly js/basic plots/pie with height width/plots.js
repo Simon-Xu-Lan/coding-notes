@@ -24,7 +24,16 @@ function updatePlotly() {
   Plotly.restyle('pie', 'values', [window[dataset]]);
 }
 
-data = [{ type: 'pie', values: us }];
+data = [
+  {
+    type: 'pie',
+    values: {
+      razor: 49210.27,
+      spin: 1802986.7700000065,
+      helbiz: 471922.78000000346,
+    },
+  },
+];
 var layout = {
   height: 600,
   width: 800,

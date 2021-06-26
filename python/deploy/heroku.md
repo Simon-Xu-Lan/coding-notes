@@ -41,6 +41,7 @@ web: gunicorn main:app
 ```
 
 6. create requirements.txt in the project folder, make sure all dependencies are install at the venu environment/project folder
+    - Pandas version for heroku 0.8.1
 
 ```
 pip freeze > requirements.txt
