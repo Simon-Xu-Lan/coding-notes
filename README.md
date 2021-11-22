@@ -5,7 +5,7 @@
 
 <p>This example demonstrates how to assign an "onclick" event to a p element.</p>
 
-<a id="demo" onclick="myFunction()">Click me.</a>
+<a href="https://github.com/KrauseFx/markdown-to-html-github-style" id="demo" onclick="myFunction()">Click me.</a>
 
 <script>
 function myFunction() {
