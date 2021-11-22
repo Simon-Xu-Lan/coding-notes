@@ -46,6 +46,7 @@ xa.addEventListener('click', function(e) {
   });
 
 }, false);
+  
 <a href='#/' id='expAll' class='exp'>Expand All</a>
 
 <details>Hello World
