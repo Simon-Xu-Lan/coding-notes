@@ -1,7 +1,7 @@
 # coding-notes
 
 # test
-<button onClick='(function() {document.getElementsByClassName("moreDetails").click()})();'>button</button>
+<button name="button" onClick='(function() {document.getElementsByClassName("moreDetails").click()})();'>button</button>
 <details class="moreDetails">
 
 
