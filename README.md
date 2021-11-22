@@ -1,17 +1,11 @@
 # coding-notes
 
-# test
-<button name="button" onClick='(function() {document.getElementsByClassName("moreDetails").click()})();'>button</button>
-<details class="moreDetails">
+<script src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+<script>
+...do stuff...
+</script>
 
 
-```sql
-select *
-FROM sdkf
-WHERE lskdjf
-```
-
-</details>
 
 <script>
 // Reference the toggle link
