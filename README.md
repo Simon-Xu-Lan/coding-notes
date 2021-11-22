@@ -13,6 +13,7 @@ WHERE lskdjf
 
 </details>
 
+<script>
 // Reference the toggle link
 var xa = document.getElementById('expAll');
 
@@ -46,6 +47,8 @@ xa.addEventListener('click', function(e) {
   });
 
 }, false);
+  
+</script>
   
 <a href='#/' id='expAll' class='exp'>Expand All</a>
 
