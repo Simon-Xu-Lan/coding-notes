@@ -1,21 +1,20 @@
 # coding-notes
 
-<h1>The onclick Event</h1>
+<html>
+<body>
 
-<p>The onclick event is used to trigger a function when an element is clicked on.</p>
+<p>This example demonstrates how to assign an "onclick" event to a p element.</p>
 
-<p>Click the button to trigger a function that will output "Hello World" in a p element with id="demo".</p>
-
-<button onclick="myFunction()">Click me</button>
-
-<p id="demo"></p>
+<p id="demo" onclick="myFunction()">Click me.</p>
 
 <script>
 function myFunction() {
-  document.getElementById("demo").innerHTML = "Hello World";
+  document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
 }
 </script>
 
+</body>
+</html>
 
 
 =======================
