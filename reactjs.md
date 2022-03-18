@@ -1,6 +1,6 @@
 - React is Component Based:
 
-  - With React we can build encapsulated components that manage their own state, then compose them to make complex UIs.
+  - With React we can build encapsulated components / self-contained components that manage their own state, then compose them to make complex UIs.
   - Since our components are written in JavaScript instead of HTML, we can easily pass data into our application and keep our state out of the DOM.
 
 - With React, you can "Learn Once, Write Anywhere":
@@ -59,6 +59,65 @@
     - When Babel translates our `App` component's JSX code to plain old JavaScript
 
 - what the purpose of `ReactDOM.render` in index.js is?
+
   - We use `ReactDOM.render` to render a single component or tree of components to the DOM.
   - In normal case, `App` is the root of our component tree
     - it renders all of our other components inside.
+
+- Create React App uses a Webpack development server that auto updates the view as the content changes.
+
+- What's going on inside `src/App.js`?
+
+  - It's common to have multiple components that fit together inside of a React application.
+  - We'll typically compose all of the top level components inside of our `App` component.
+
+- Do you remember what the purpose of `ReactDOM.render` is? What is it doing?
+
+  We use `ReactDOM.render` to render a single component or tree of components to the DOM. In our case, `App` is the root of our component tree (it renders all of our other components inside).
+
+- function component
+
+  ```js
+  import React from 'react';
+
+  function HelloBootstrap() {
+    return (
+      <div className="container">
+        <div className="jumbotron">
+          <h1>Hello, world!</h1>
+          <p>I'm a jumbotron!</p>
+          <p>
+            <button className="btn btn-primary btn-lg">Learn more</button>
+          </p>
+        </div>
+        <div className="card mb-4">
+          <div className="card-header">
+            <h3>Card title</h3>
+          </div>
+          <div className="card-body">
+            <p className="card-text">Card content</p>
+          </div>
+        </div>
+        <div className="card mb-4">
+          <div className="card-header">
+            <h3>Card title</h3>
+          </div>
+          <div className="card-body">
+            <p className="card-text">Card content</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  export default HelloBootstrap;
+  ```
+
+  - BootStrap CDN
+    - Add a Bootstrap CDN to the head of your React application's index.html file inside public/index.html.
+    ```js
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    ```

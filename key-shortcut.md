@@ -1,0 +1,7 @@
+- move cursor to right/left end of a line
+  - mac
+    - cmd + right arrow key
+    - cmd + left arrow key
+  - win
+    - ctrl + right arrow key
+    - ctrl + left arrow key

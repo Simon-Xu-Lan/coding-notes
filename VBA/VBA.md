@@ -151,3 +151,18 @@
 
   - See this website for color guides:
     - http://dmcritchie.mvps.org/excel/colors.htm
+
+- worksheet name
+  ```VB
+    ws.name
+  ```
+
+- Insert a column, row
+  https://docs.microsoft.com/en-us/office/troubleshoot/excel/macro-insert-delete-rows-columns
+ 
+- Iterate worksheets
+  ```VB
+    For Each worksheet in worksheets
+      ' Do something
+    next worksheet
+  ```

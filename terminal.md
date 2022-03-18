@@ -20,3 +20,21 @@
   7. If successful the application should now be fully functional. After you create a few Authors with a few posts, try navigating to either `localhost:8080/api/posts` or `localhost:8080/api/authors` to make sure the JSON returned for both routes includes all of the data.
 
   **Hint**: The "include" key goes on the same options object as the "where" attribute we've been using. Examples can be found at the link supplied.
+
+  - Basic command
+   - mkdir <FOLDER NAME>
+      - make new folder
+   - touch <File name>
+      - create a new file
+   - rm 
+      - remove a file 
+   - rm -d folder name
+      - remove a folder
+   - echo "text" > filename
+      - write text into file
+   - open a file
+      - mac
+         - open file name
+      - windows
+         - explore file name
+   
