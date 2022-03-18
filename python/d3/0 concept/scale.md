@@ -1,0 +1,1 @@
+- See this example of create [D3 Band Scales & Bottom Axes](https://bl.ocks.org/biovisualize/9c0d30d0539914ecdb15). Remember that the domain and range must both be arrays.
