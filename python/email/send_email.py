@@ -32,7 +32,6 @@ def gmail_to(from_addrs, password, to_addrs, message_subject, message_text):
 
 # Show how to call function gmail_to
 from_addrs = "xulan20907@gmail.com"
-password = "JamesCook2022"
 to_addrs = "lxu@instructors.2u.com"
 message_subject = "Hello"
 message_text = "This test again"
@@ -79,7 +78,6 @@ def gmail_to_cc(
 
 
 from_addrs = "xulan20907@gmail.com"
-password = "JamesCook2022"
 to_addrs = "xulan20907@gmail.com"
 cc_addrs = ["codeforfun2020@gmail.com", "lxu@instructors.2u.com"]
 bcc_addrs = ["simonxu102316@gmail.com"]
