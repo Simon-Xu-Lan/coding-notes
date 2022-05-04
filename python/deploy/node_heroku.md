@@ -52,7 +52,7 @@
 
 ### debug
 ```shell
-heroku logs --tai --app your-app-name
+heroku logs --tail --app your-app-name
 ```
 - make sure package.json has the start script. index.js is the main file of your app.
 ```json
