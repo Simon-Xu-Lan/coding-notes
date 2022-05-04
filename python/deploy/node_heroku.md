@@ -38,7 +38,8 @@
     ```
 12.  Set the port like following 
     ```js
-    var PORT = process.env.port || 3000
+    <!-- PORT must uppercase -->
+    var PORT = process.env.PORT || 3000
     ```
 13. Push to heroku
     ```shell
