@@ -4,6 +4,8 @@
 3. Clikc New button on the top right corner of dashboard.
 4. Give a app name and create an app.
 5. Download Heroku ClI and install it
+    - search Heroku CLI in the web
+    - https://www.youtube.com/watch?v=D2GLVoiEZyE
 6. At terminal run the following 
     ```shell
     heroku login
@@ -19,6 +21,10 @@
     ```shell
     # connect the local repo to remote heroku app
     heroku git:remote -a your-app-name
+    ```
+    - if you don't have app existed in heroku, create a heroku app using the following command
+    ```shell
+    heroku create your-app-name
     ```
 8. Push to heroku
     ```shell
@@ -73,3 +79,15 @@ heroku logs --tail --app your-app-name
 5. Clikc "enable Automatic deploys"
 6. First time, please click "deploy branch"
 7. click "view" button
+
+
+# python Requirements.txt
+- tensorflow
+    tensoreflow-cpu==2.5.0
+- Pandas
+    https://stackoverflow.com/questions/66143348/problem-loading-pandas-when-deploying-heroku-web-application
+- Numpy
+    https://stackoverflow.com/questions/33588763/heroku-not-recognizing-numpy-in-requirements-txt
+- Heroku
+    https://www.youtube.com/watch?v=d1DKT2xk_dM
+    

@@ -47,7 +47,7 @@ web: gunicorn main:app
 pip freeze > requirements.txt
 ```
 
-7. Init repo, add to repo. commit to repo
+7. Init repo if , add to repo. commit to repo
 
 ```
 git Init
